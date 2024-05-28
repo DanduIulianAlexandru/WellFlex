@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/emailSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/passwordSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/emailSignIn"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/loginButtonSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/passwordSignIn"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/signupButtonSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/loginButtonSignIn"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/forgotPasswordButtonSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_password"
+        android:padding="10dp"
+        android:layout_below="@id/signupButtonSignIn"
+        android:layout_centerHorizontal="true"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarSignIn"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_below="@id/forgotPasswordButtonSignIn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+</RelativeLayout>

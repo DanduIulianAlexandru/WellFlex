@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarEditNutrition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Edit Nutrition Profile" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_age"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Age"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edit_height"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Height"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/edit_weight"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Weight"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/edit_sex"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Sex" />
+
+            <EditText
+                android:id="@+id/edit_objective"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Objective"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/button_save_nutrition_profile"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Save" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
