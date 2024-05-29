@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activities.SetupActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/profilePicSetup"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile_pic"
+            android:scaleType="centerCrop"/>
+
+        <Button
+            android:id="@+id/ChooseImageButtonSetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Image" />
+
+        <EditText
+            android:id="@+id/usernameSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Username" />
+
+        <EditText
+            android:id="@+id/nameSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Name" />
+
+        <EditText
+            android:id="@+id/biographySetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Biography" />
+
+        <EditText
+            android:id="@+id/ageSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Age" />
+
+        <EditText
+            android:id="@+id/heightSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Height" />
+
+        <EditText
+            android:id="@+id/weightSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Weight" />
+
+        <EditText
+            android:id="@+id/sexSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Sex" />
+
+        <EditText
+            android:id="@+id/objectiveSetup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Objective" />
+
+        <Button
+            android:id="@+id/saveButtonSetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+
+    </LinearLayout>
+</ScrollView>

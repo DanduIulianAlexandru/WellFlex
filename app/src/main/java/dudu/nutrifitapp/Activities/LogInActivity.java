@@ -131,28 +131,27 @@ public class LogInActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Object data) {
                                                 User user = (User) data;
-                                                Toast.makeText(LogInActivity.this, user.getSocialProfile().getProfilePictureUrl(), Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(LogInActivity.this, LoggedInActivity.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
-
                                             @Override
                                             public void onError(Exception e) {
-
                                             }
                                         });
                                     }
+                                    else{
+                                        Intent intent = new Intent(LogInActivity.this, SetupActivity.class);
+                                        intent.putExtra("passwordUser", password);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                     Toast.makeText(LogInActivity.this, "EROARE", Toast.LENGTH_SHORT).show();
                                 }
                             });
-
-                            // Login success, redirect to LoggedIn activity
-                            //Toast.makeText(LogInActivity.this, "Welcome User", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LogInActivity.this, LoggedInActivity.class);
-                            startActivity(intent);
-                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             String errorMessage = "Authentication failed. ";
