@@ -1,0 +1,207 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/backButtonOptionsProfile"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="Back"
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/backButtonOptionsProfile"
+        android:text="Setup Account"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/profilePicOptionsProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/titleText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/round_image_background"
+        android:src="@drawable/profile_pic" />
+
+    <Button
+        android:id="@+id/ChooseImageButtonOptionsProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePicOptionsProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Change Profile Picture" />
+
+    <EditText
+        android:id="@+id/emailOptionsProfile"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/ChooseImageButtonOptionsProfile"
+        android:layout_marginTop="10dp"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/passwordOptionsProfile"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/emailOptionsProfile"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
+        android:hint="Password" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordOptionsProfile"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.github.florent37.expansionpanel.ExpansionHeader
+                android:id="@+id/headerNutritiveProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nutritive Profile"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.github.florent37.expansionpanel.ExpansionHeader>
+
+            <com.github.florent37.expansionpanel.ExpansionLayout
+                android:id="@+id/layout_NutritiveProfile_OptionsProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/ageOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Age" />
+
+                    <EditText
+                        android:id="@+id/heightOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Height" />
+
+                    <EditText
+                        android:id="@+id/weightOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Weight" />
+
+                    <EditText
+                        android:id="@+id/sexOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Sex" />
+
+                    <EditText
+                        android:id="@+id/objectiveOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Objective" />
+                </LinearLayout>
+            </com.github.florent37.expansionpanel.ExpansionLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.github.florent37.expansionpanel.ExpansionHeader
+                android:id="@+id/headerSocialProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Social Profile"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.github.florent37.expansionpanel.ExpansionHeader>
+
+            <com.github.florent37.expansionpanel.ExpansionLayout
+                android:id="@+id/layout_SocialProfile_OptionsProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/usernameOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Username" />
+
+                    <EditText
+                        android:id="@+id/nameOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Name" />
+
+                    <EditText
+                        android:id="@+id/biographyOptionsProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Biography" />
+                </LinearLayout>
+            </com.github.florent37.expansionpanel.ExpansionLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/saveButtonOptionsProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="Save" />
+</RelativeLayout>

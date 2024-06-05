@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/fetchDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch Data"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:id="@+id/userInputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fetchDataButton"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ageField"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Age"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/heightField"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Height (cm)"
+                android:inputType="number"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/weightField"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Weight (kg)"
+                android:inputType="number"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/objectiveField"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Objective (kg per week)"
+                android:inputType="number"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/sexField"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Sex (Man/Woman)"
+                android:inputType="text"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick level of Physical Activity:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <Spinner
+                android:id="@+id/activityLevelSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gain/Lose Weight:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <Spinner
+                android:id="@+id/goalSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate Calories and Macros"
+        android:layout_below="@id/userInputContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/caloriesField"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Number of Calories per day"
+        android:inputType="number"
+        android:layout_below="@id/calculateButton"
+        android:layout_marginTop="8dp"
+        android:enabled="false" />
+
+    <EditText
+        android:id="@+id/proteinField"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Protein (g)"
+        android:inputType="number"
+        android:layout_below="@id/caloriesField"
+        android:layout_marginTop="8dp"
+        android:enabled="false" />
+
+    <EditText
+        android:id="@+id/fatField"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Fat (g)"
+        android:inputType="number"
+        android:layout_below="@id/proteinField"
+        android:layout_marginTop="8dp"
+        android:enabled="false" />
+
+    <EditText
+        android:id="@+id/carbField"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Carbohydrates (g)"
+        android:inputType="number"
+        android:layout_below="@id/fatField"
+        android:layout_marginTop="8dp"
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/saveDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Save Results"
+        android:layout_below="@id/carbField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

@@ -30,12 +30,25 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
-
+    implementation libs.fragment // Ensure this is present
+    implementation libs.imagepicker
+    implementation libs.expansionpanel.v124
+    implementation libs.constraintlayout.v204
+    implementation libs.firebase.auth.v2101
+    implementation libs.firebase.database.v2002
+    implementation libs.material.v130
+    implementation libs.skydoves.expandablelayout
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
     implementation libs.firebase.storage
-    implementation libs.glide
+    implementation libs.gridlayout
     annotationProcessor libs.compiler
     implementation libs.appcompat
     implementation libs.material
@@ -50,4 +63,6 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation libs.glide
+    annotationProcessor libs.compiler
 }

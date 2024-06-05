@@ -36,25 +36,5 @@ public class LoggedInActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_logged_in);
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        userDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(currentUser.getUid());
-
-        welcome = findViewById(R.id.welcome);
-
-        userDatabase.child("socialProfile").child("username").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String username = dataSnapshot.getValue(String.class);
-                    welcome.setText("Welcome, " + username + "!");
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle possible errors
-            }
-        });
     }
 }

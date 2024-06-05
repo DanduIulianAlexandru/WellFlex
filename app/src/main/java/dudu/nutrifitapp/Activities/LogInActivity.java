@@ -131,7 +131,7 @@ public class LogInActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Object data) {
                                                 User user = (User) data;
-                                                Intent intent = new Intent(LogInActivity.this, LoggedInActivity.class);
+                                                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                                                 startActivity(intent);
                                                 finish();
                                             }

@@ -71,7 +71,7 @@ public class SetupActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userPassowrd =intent.getStringExtra("passwordUser");
         userDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(currentUser.getUid());
-        storageReference = FirebaseStorage.getInstance().getReference("profile_pictures");
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         btnChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,11 +128,12 @@ public class SetupActivity extends AppCompatActivity {
         int weight = Integer.parseInt(weightStr);
         double objective = Double.parseDouble(objectiveStr);
 
-        final StorageReference fileReference = storageReference.child(UUID.randomUUID().toString());
+        String path = username + "_profile_picture.jpg";
+        final StorageReference fileReference = storageReference.child(path);
         fileReference.putFile(imageUri).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                    profilePictureUrl = uri.toString();
+                    profilePictureUrl = username + "_profile_picture.jpg";
                     saveUserToDatabase(username, name, biography, age, height, weight, sex, objective, profilePictureUrl);
                 });
             } else {

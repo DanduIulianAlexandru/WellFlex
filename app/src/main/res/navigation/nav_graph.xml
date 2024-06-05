@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_nutrition">
+
+    <fragment
+        android:id="@+id/navigation_nutrition"
+        android:name="dudu.nutrifitapp.ui.nutrition.NutritionFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_nutrition" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="dudu.nutrifitapp.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="dudu.nutrifitapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_options"
+        android:name="dudu.nutrifitapp.ui.options.OptionsFragment"
+        android:label="Options"
+        tools:layout="@layout/fragment_options" />
+</navigation>
