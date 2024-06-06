@@ -12,6 +12,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="nutrition">Nutrition</string>
     <string-array name="activity_levels">
         <item>Sedentary(little or no exercise)</item>
         <item>Lightly Active (1–3 exercise per week)</item>

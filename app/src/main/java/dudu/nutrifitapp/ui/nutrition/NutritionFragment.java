@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,16 +19,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
 import dudu.nutrifitapp.databinding.FragmentNutritionBinding;
+import dudu.nutrifitapp.model.Meal;
 
 public class NutritionFragment extends Fragment {
 
     private static final int REQUEST_CODE_ADD_FOOD = 1;
     private String selectedMealType;
-
     private FragmentNutritionBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private int maxCalories;
+    private double maxCarbs;
+    private double maxProtein;
+    private double maxFat;
 
     @Nullable
     @Override
@@ -36,6 +49,8 @@ public class NutritionFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("EEEE, dd/MM", Locale.getDefault());
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -43,7 +58,8 @@ public class NutritionFragment extends Fragment {
         }
 
         setupAddFoodButtons();
-
+        setupDateNavigation();
+        setupGeneratePieChartButton();
         return view;
     }
 
@@ -52,6 +68,18 @@ public class NutritionFragment extends Fragment {
         binding.buttonAddLunch.setOnClickListener(v -> openSearchFoodActivity("lunch"));
         binding.buttonAddDinner.setOnClickListener(v -> openSearchFoodActivity("dinner"));
         binding.buttonAddSnack.setOnClickListener(v -> openSearchFoodActivity("snack"));
+    }
+
+    private void setupDateNavigation() {
+        binding.textViewDate.setText(dateFormat.format(calendar.getTime()));
+        binding.buttonPreviousDay.setOnClickListener(v -> changeDate(-1));
+        binding.buttonNextDay.setOnClickListener(v -> changeDate(1));
+    }
+
+    private void changeDate(int amount) {
+        calendar.add(Calendar.DAY_OF_MONTH, amount);
+        binding.textViewDate.setText(dateFormat.format(calendar.getTime()));
+        loadMealsForDate(calendar.getTimeInMillis());
     }
 
     private void openSearchFoodActivity(String mealType) {
@@ -81,22 +109,11 @@ public class NutritionFragment extends Fragment {
                     double fat = snapshot.child("Fat").getValue(Double.class);
                     int calories = snapshot.child("Calories").getValue(Integer.class);
 
-                    switch (selectedMealType) {
-                        case "breakfast":
-                            updateMealUI(binding.textViewLoggedBreakfast, binding.textViewBreakfastCarbs, binding.textViewBreakfastProtein, binding.textViewBreakfastFat, binding.textViewBreakfastCalories, foodName, carbs, protein, fat, calories);
-                            break;
-                        case "lunch":
-                            updateMealUI(binding.textViewLoggedLunch, binding.textViewLunchCarbs, binding.textViewLunchProtein, binding.textViewLunchFat, binding.textViewLunchCalories, foodName, carbs, protein, fat, calories);
-                            break;
-                        case "dinner":
-                            updateMealUI(binding.textViewLoggedDinner, binding.textViewDinnerCarbs, binding.textViewDinnerProtein, binding.textViewDinnerFat, binding.textViewDinnerCalories, foodName, carbs, protein, fat, calories);
-                            break;
-                        case "snack":
-                            updateMealUI(binding.textViewLoggedSnacks, binding.textViewSnacksCarbs, binding.textViewSnacksProtein, binding.textViewSnacksFat, binding.textViewSnacksCalories, foodName, carbs, protein, fat, calories);
-                            break;
-                    }
+                    // Update UI
+                    updateMealUI(foodName, carbs, protein, fat, calories);
 
-                    updateProgressBar(calories, carbs, protein, fat);
+                    // Store meal in database
+                    storeMeal(foodId, foodName, carbs, protein, fat, calories);
                 }
             }
 
@@ -107,12 +124,144 @@ public class NutritionFragment extends Fragment {
         });
     }
 
-    private void updateMealUI(TextView loggedFoodTextView, TextView carbsTextView, TextView proteinTextView, TextView fatTextView, TextView caloriesTextView, String foodName, double carbs, double protein, double fat, int calories) {
-        loggedFoodTextView.setText(foodName);
-        carbsTextView.setText(String.format("%.1f g", roundToSingleDecimal(carbs)));
-        proteinTextView.setText(String.format("%.1f g", roundToSingleDecimal(protein)));
-        fatTextView.setText(String.format("%.1f g", roundToSingleDecimal(fat)));
-        caloriesTextView.setText(String.format("%d kcal", calories));
+    private void updateMealUI(String foodName, double carbs, double protein, double fat, int calories) {
+        TextView loggedFoodTextView = null, carbsTextView = null, proteinTextView = null, fatTextView = null, caloriesTextView = null;
+        switch (selectedMealType) {
+            case "breakfast":
+                loggedFoodTextView = binding.textViewLoggedBreakfast;
+                carbsTextView = binding.textViewBreakfastCarbs;
+                proteinTextView = binding.textViewBreakfastProtein;
+                fatTextView = binding.textViewBreakfastFat;
+                caloriesTextView = binding.textViewBreakfastCalories;
+                break;
+            case "lunch":
+                loggedFoodTextView = binding.textViewLoggedLunch;
+                carbsTextView = binding.textViewLunchCarbs;
+                proteinTextView = binding.textViewLunchProtein;
+                fatTextView = binding.textViewLunchFat;
+                caloriesTextView = binding.textViewLunchCalories;
+                break;
+            case "dinner":
+                loggedFoodTextView = binding.textViewLoggedDinner;
+                carbsTextView = binding.textViewDinnerCarbs;
+                proteinTextView = binding.textViewDinnerProtein;
+                fatTextView = binding.textViewDinnerFat;
+                caloriesTextView = binding.textViewDinnerCalories;
+                break;
+            case "snack":
+                loggedFoodTextView = binding.textViewLoggedSnacks;
+                carbsTextView = binding.textViewSnacksCarbs;
+                proteinTextView = binding.textViewSnacksProtein;
+                fatTextView = binding.textViewSnacksFat;
+                caloriesTextView = binding.textViewSnacksCalories;
+                break;
+        }
+
+        if (loggedFoodTextView != null) {
+            String currentText = loggedFoodTextView.getText().toString();
+            if (currentText.equals("Logged food: None")) {
+                loggedFoodTextView.setText(foodName);
+            } else {
+                loggedFoodTextView.setText(currentText + " and " + foodName);
+            }
+
+            double currentCarbs = extractNumericValue(carbsTextView.getText().toString());
+            double currentProtein = extractNumericValue(proteinTextView.getText().toString());
+            double currentFat = extractNumericValue(fatTextView.getText().toString());
+            int currentCalories = Integer.parseInt(caloriesTextView.getText().toString().split(" ")[0]);
+
+            carbsTextView.setText(String.format("%.1f g", roundToSingleDecimal(currentCarbs + carbs)));
+            proteinTextView.setText(String.format("%.1f g", roundToSingleDecimal(currentProtein + protein)));
+            fatTextView.setText(String.format("%.1f g", roundToSingleDecimal(currentFat + fat)));
+            caloriesTextView.setText(String.format("%d kcal", currentCalories + calories));
+        }
+
+        updateProgressBar(calories, carbs, protein, fat);
+    }
+
+    private void storeMeal(String foodId, String foodName, double carbs, double protein, double fat, int calories) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.getTime());
+            DatabaseReference mealRef = mDatabase.child("DailyLogs").child(date).child(userId).child(selectedMealType).push();
+            mealRef.setValue(new Meal(foodId, foodName, carbs, protein, fat, calories));
+        }
+    }
+
+    private void loadMealsForDate(long dateInMillis) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(dateInMillis);
+            DatabaseReference mealsRef = mDatabase.child("DailyLogs").child(date).child(userId);
+
+            mealsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    clearMeals();
+                    for (DataSnapshot mealTypeSnapshot : snapshot.getChildren()) {
+                        String mealType = mealTypeSnapshot.getKey();
+                        ArrayList<String> foodNames = new ArrayList<>();
+                        double totalCarbs = 0, totalProtein = 0, totalFat = 0;
+                        int totalCalories = 0;
+                        for (DataSnapshot mealSnapshot : mealTypeSnapshot.getChildren()) {
+                            String foodName = mealSnapshot.child("foodName").getValue(String.class);
+                            double carbs = mealSnapshot.child("carbs").getValue(Double.class);
+                            double protein = mealSnapshot.child("protein").getValue(Double.class);
+                            double fat = mealSnapshot.child("fat").getValue(Double.class);
+                            int calories = mealSnapshot.child("calories").getValue(Integer.class);
+
+                            foodNames.add(foodName);
+                            totalCarbs += carbs;
+                            totalProtein += protein;
+                            totalFat += fat;
+                            totalCalories += calories;
+                        }
+
+                        selectedMealType = mealType;
+                        updateMealUI(String.join(" and ", foodNames), totalCarbs, totalProtein, totalFat, totalCalories);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle possible errors
+                }
+            });
+        }
+    }
+
+    private void clearMeals() {
+        binding.textViewLoggedBreakfast.setText("Logged food: None");
+        binding.textViewBreakfastCarbs.setText("0 / " + maxCarbs);
+        binding.textViewBreakfastProtein.setText("0 / " + maxProtein);
+        binding.textViewBreakfastFat.setText("0 / " + maxFat);
+        binding.textViewBreakfastCalories.setText("0 / " + maxCalories);
+
+        binding.textViewLoggedLunch.setText("Logged food: None");
+        binding.textViewLunchCarbs.setText("0 / " + maxCarbs);
+        binding.textViewLunchProtein.setText("0 / " + maxProtein);
+        binding.textViewLunchFat.setText("0 / " + maxFat);
+        binding.textViewLunchCalories.setText("0 / " + maxCalories);
+
+        binding.textViewLoggedDinner.setText("Logged food: None");
+        binding.textViewDinnerCarbs.setText("0 / " + maxCarbs);
+        binding.textViewDinnerProtein.setText("0 / " + maxProtein);
+        binding.textViewDinnerFat.setText("0 / " + maxFat);
+        binding.textViewDinnerCalories.setText("0 / " + maxCalories);
+
+        binding.textViewLoggedSnacks.setText("Logged food: None");
+        binding.textViewSnacksCarbs.setText("0 / " + maxCarbs);
+        binding.textViewSnacksProtein.setText("0 / " + maxProtein);
+        binding.textViewSnacksFat.setText("0 / " + maxFat);
+        binding.textViewSnacksCalories.setText("0 / " + maxCalories);
+
+        binding.progressBar.setProgress(0);
+        binding.textViewCalorieIntake.setText("0 / " + maxCalories + " kcal");
+        binding.textViewCarbs.setText("0 / " + maxCarbs + " g");
+        binding.textViewProtein.setText("0 / " + maxProtein + " g");
+        binding.textViewFat.setText("0 / " + maxFat + " g");
     }
 
     private void updateProgressBar(int calories, double carbs, double protein, double fat) {
@@ -166,17 +315,38 @@ public class NutritionFragment extends Fragment {
                 String fat = snapshot.child("Fat").getValue(String.class);
                 String protein = snapshot.child("Protein").getValue(String.class);
 
-                binding.textViewCalorieIntake.setText("0 / " + calories + " kcal");
-                binding.textViewCarbs.setText("0 / " + carbs + " g");
-                binding.textViewFat.setText("0 / " + fat + " g");
-                binding.textViewProtein.setText("0 / " + protein + " g");
-                binding.progressBar.setMax(Integer.parseInt(calories));
+                maxCalories = Integer.parseInt(calories);
+                maxCarbs = Double.parseDouble(carbs);
+                maxFat = Double.parseDouble(fat);
+                maxProtein = Double.parseDouble(protein);
+
+                binding.textViewCalorieIntake.setText("0 / " + maxCalories + " kcal");
+                binding.textViewCarbs.setText("0 / " + maxCarbs + " g");
+                binding.textViewFat.setText("0 / " + maxFat + " g");
+                binding.textViewProtein.setText("0 / " + maxProtein + " g");
+                binding.progressBar.setMax(maxCalories);
+
+                // Load meals for today
+                loadMealsForDate(calendar.getTimeInMillis());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle possible errors
             }
+        });
+    }
+    private void setupGeneratePieChartButton() {
+        binding.buttonGeneratePieChart.setOnClickListener(v -> {
+            double totalCarbs = extractNumericValue(binding.textViewCarbs.getText().toString());
+            double totalProtein = extractNumericValue(binding.textViewProtein.getText().toString());
+            double totalFat = extractNumericValue(binding.textViewFat.getText().toString());
+
+            Intent intent = new Intent(getActivity(), NutritionStatisticsActivity.class);
+            intent.putExtra("carbs", totalCarbs);
+            intent.putExtra("protein", totalProtein);
+            intent.putExtra("fat", totalFat);
+            startActivity(intent);
         });
     }
 }

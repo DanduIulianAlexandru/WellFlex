@@ -15,8 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:gravity="center"
-        android:background="#E0E0E0">
+        android:gravity="center">
 
         <ImageButton
             android:id="@+id/buttonPreviousDay"
@@ -31,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monday, 06/03"
-            android:textColor="@android:color/white"
             android:textSize="18sp"
             android:layout_marginHorizontal="16dp" />
 
@@ -745,6 +743,15 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <Button
+                android:id="@+id/buttonGeneratePieChart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generate Today Statistics"
+                android:textColor="@color/colorBlack"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
         </LinearLayout>
     </ScrollView>
 

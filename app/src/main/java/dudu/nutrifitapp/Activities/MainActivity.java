@@ -5,7 +5,6 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.ui.AppBarConfiguration;
 
@@ -14,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import dudu.nutrifitapp.R;
 import dudu.nutrifitapp.ui.dashboard.DashboardFragment;
 import dudu.nutrifitapp.ui.nutrition.NutritionFragment;
-import dudu.nutrifitapp.ui.notifications.NotificationsFragment;
+import dudu.nutrifitapp.ui.fitness.FitnessFragment;
 import dudu.nutrifitapp.ui.options.OptionsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new DashboardFragment();
                 else if(item.getItemId() == R.id.navigation_nutrition)
                     selectedFragment = new NutritionFragment();
-                else if(item.getItemId() == R.id.navigation_notifications)
-                    selectedFragment = new NotificationsFragment();
+                else if(item.getItemId() == R.id.navigation_fitness)
+                    selectedFragment = new FitnessFragment();
                 else if(item.getItemId() == R.id.navigation_options)
                     selectedFragment = new OptionsFragment();
 
