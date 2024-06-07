@@ -16,6 +16,15 @@
         android:theme="@style/Theme.NutriFitApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.fitness.FitnessCompletedWorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fitness.FitnessWorkoutExerciseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fitness.WorkoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.nutrition.NutritionStatisticsActivity"
             android:exported="false" />
         <activity

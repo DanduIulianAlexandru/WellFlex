@@ -2,7 +2,6 @@ package dudu.nutrifitapp.ui.options;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +28,6 @@ import com.google.firebase.storage.StorageReference;
 import java.util.concurrent.TimeUnit;
 
 import dudu.nutrifitapp.Activities.LogInActivity;
-import dudu.nutrifitapp.Activities.SetupActivity;
 import dudu.nutrifitapp.R;
 
 public class OptionsFragment extends Fragment {
@@ -83,10 +82,13 @@ public class OptionsFragment extends Fragment {
 
                         StorageReference imageRef = storageRef.child(profilePicUrl);
                         imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                            Glide.with(OptionsFragment.this)
-                                    .load(uri)
-                                    .apply(RequestOptions.circleCropTransform())
-                                    .into(profilePicture);
+                            // Check if fragment is still attached
+                            if (isAdded() && getActivity() != null) {
+                                Glide.with(OptionsFragment.this)
+                                        .load(uri)
+                                        .apply(RequestOptions.circleCropTransform())
+                                        .into(profilePicture);
+                            }
                         }).addOnFailureListener(exception -> {
                             // Handle any errors
                             Toast.makeText(getActivity(), "Error getting download URL", Toast.LENGTH_SHORT).show();
