@@ -6,11 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import android.widget.LinearLayout;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -30,16 +38,16 @@ public class FitnessFragment extends Fragment {
         View view = binding.getRoot();
 
         calendar = Calendar.getInstance();
-        updateDate();
+        updateDateAndLoadStats();
 
         binding.buttonPreviousDay.setOnClickListener(v -> {
             calendar.add(Calendar.DAY_OF_MONTH, -1);
-            updateDate();
+            updateDateAndLoadStats();
         });
 
         binding.buttonNextDay.setOnClickListener(v -> {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
-            updateDate();
+            updateDateAndLoadStats();
         });
 
         // Set up buttons for difficulty levels
@@ -53,10 +61,36 @@ public class FitnessFragment extends Fragment {
         return view;
     }
 
-    private void updateDate() {
+    private void updateDateAndLoadStats() {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM/dd", Locale.getDefault());
         String date = sdf.format(calendar.getTime());
         binding.textViewDate.setText(date);
+        loadStatsForDate(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.getTime()));
+    }
+
+    private void loadStatsForDate(String date) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("DailyStats").child(date);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding != null) {  // Check if the binding is still valid
+                    if (snapshot.exists()) {
+                        binding.tvCaloriesBurnt.setText(String.format(Locale.getDefault(), "%.1f🔥", snapshot.child("caloriesBurnt").getValue(Double.class)));
+                        binding.tvWorkoutsCompleted.setText(String.valueOf(snapshot.child("workoutsCompleted").getValue(Integer.class)));
+                        binding.tvTimeSpent.setText(snapshot.child("timeSpent").getValue(Integer.class) + " min");
+                    } else {
+                        binding.tvCaloriesBurnt.setText("0");
+                        binding.tvWorkoutsCompleted.setText("0");
+                        binding.tvTimeSpent.setText("0 min");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle possible errors
+            }
+        });
     }
 
     private void showWorkouts(String level) {

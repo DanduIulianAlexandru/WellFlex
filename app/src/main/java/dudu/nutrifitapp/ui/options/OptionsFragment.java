@@ -115,11 +115,13 @@ public class OptionsFragment extends Fragment {
         });
 
         btnProgressNutrition.setOnClickListener(v -> {
-            // Navigate to Progress Nutrition Fragment or Activity
+            Intent intent = new Intent(getActivity(), OptionsProgressNutritionActivity.class);
+            startActivity(intent);
         });
 
         btnProgressFitness.setOnClickListener(v -> {
-            // Navigate to Progress Fitness Fragment or Activity
+            Intent intent = new Intent(getActivity(), OptionsProgressFitnessActivity.class);
+            startActivity(intent);
         });
 
         btnMealsRecipesFood.setOnClickListener(v -> {

@@ -11,7 +11,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import dudu.nutrifitapp.databinding.FitnessCompletedWorkoutBinding;
+import dudu.nutrifitapp.model.DailyStats;
 
 public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
 
@@ -20,6 +27,7 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
     private double metValue;
     private int totalExercises;
     private int totalTime;
+    private double caloriesBurnt;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,12 +45,12 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
         binding.imageWorkoutCompleted.setImageResource(workoutImageResId);
         binding.textCongratulations.setText("Congratulations, you've completed the workout!");
         binding.textWorkoutTitle.setText(workoutTitle);
-        binding.textExercisesCount.setText("Exercises:\n" + String.valueOf(totalExercises));
-        binding.textWorkoutTime.setText( "Time spent: \n" + totalTime + " minutes");
+        binding.textExercisesCount.setText(String.valueOf(totalExercises));
+        binding.textWorkoutTime.setText(totalTime + " minutes");
 
         getUserWeightFromDatabase();
         binding.buttonNext.setOnClickListener(v -> {
-            // Go back to FitnessFragment
+            saveWorkoutStatistics();
             finish();
         });
     }
@@ -56,8 +64,8 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
             databaseReference.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful() && task.getResult().exists()) {
                     userWeight = task.getResult().getValue(Double.class);
-                    double caloriesBurnt = calculateCaloriesBurnt();
-                    binding.textCaloriesBurnt.setText("Calories burnt:\n" + String.format("%.2f", caloriesBurnt));
+                    caloriesBurnt = calculateCaloriesBurnt();
+                    binding.textCaloriesBurnt.setText(String.format("%.2f", caloriesBurnt));
                 } else {
                     Toast.makeText(this, "Failed to get user weight", Toast.LENGTH_SHORT).show();
                 }
@@ -66,7 +74,7 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
     }
 
     private double calculateCaloriesBurnt() {
-        return userWeight * metValue;
+        return userWeight * metValue;  // Convert time to hours
     }
 
     private double getMetValue(String workoutTitle) {
@@ -98,5 +106,22 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
             default:
                 return 1.0;
         }
+    }
+
+    private void saveWorkoutStatistics() {
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("DailyStats").child(date);
+
+        databaseReference.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().exists()) {
+                Map<String, Object> updates = new HashMap<>();
+                updates.put("caloriesBurnt", task.getResult().child("caloriesBurnt").getValue(Double.class) + caloriesBurnt);
+                updates.put("workoutsCompleted", task.getResult().child("workoutsCompleted").getValue(Integer.class) + 1);
+                updates.put("timeSpent", task.getResult().child("timeSpent").getValue(Integer.class) + totalTime);
+                databaseReference.updateChildren(updates);
+            } else {
+                databaseReference.setValue(new DailyStats(caloriesBurnt, 1, totalTime));
+            }
+        });
     }
 }

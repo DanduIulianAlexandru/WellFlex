@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import dudu.nutrifitapp.R;
-import dudu.nutrifitapp.ui.dashboard.DashboardFragment;
+import dudu.nutrifitapp.ui.social.SocialFragment;
 import dudu.nutrifitapp.ui.nutrition.NutritionFragment;
 import dudu.nutrifitapp.ui.fitness.FitnessFragment;
 import dudu.nutrifitapp.ui.options.OptionsFragment;
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
-                if(item.getItemId() == R.id.navigation_dashboard)
-                    selectedFragment = new DashboardFragment();
+                if(item.getItemId() == R.id.navigation_social)
+                    selectedFragment = new SocialFragment();
                 else if(item.getItemId() == R.id.navigation_nutrition)
                     selectedFragment = new NutritionFragment();
                 else if(item.getItemId() == R.id.navigation_fitness)
