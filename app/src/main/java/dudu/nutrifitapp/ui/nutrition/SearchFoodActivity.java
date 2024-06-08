@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,10 +27,12 @@ import java.util.List;
 import dudu.nutrifitapp.R;
 
 public class SearchFoodActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_ADD_CUSTOM_FOOD = 2;
 
     private SearchView searchView;
     private ListView listView;
     private Button addFoodButton;
+    private Button buttonAddCustomFood;
     private TextView selectedFoodTextView;
     private TextView categoryTextView;
     private TextView carbsTextView;
@@ -58,6 +61,7 @@ public class SearchFoodActivity extends AppCompatActivity {
         carbsTextView = findViewById(R.id.carbsTextView);
         proteinTextView = findViewById(R.id.proteinTextView);
         fatTextView = findViewById(R.id.fatTextView);
+        buttonAddCustomFood = findViewById(R.id.buttonAddCustomFood);
         caloriesTextView = findViewById(R.id.caloriesTextView);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Food");
@@ -101,6 +105,11 @@ public class SearchFoodActivity extends AppCompatActivity {
                 if (selectedFoodId != null) {
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("foodId", selectedFoodId);
+                    resultIntent.putExtra("foodName", selectedFoodTextView.getText().toString());
+                    resultIntent.putExtra("carbs", Double.parseDouble(carbsTextView.getText().toString().split(" ")[1]));
+                    resultIntent.putExtra("protein", Double.parseDouble(proteinTextView.getText().toString().split(" ")[1]));
+                    resultIntent.putExtra("fat", Double.parseDouble(fatTextView.getText().toString().split(" ")[1]));
+                    resultIntent.putExtra("calories", Integer.parseInt(caloriesTextView.getText().toString().split(" ")[1]));
                     setResult(RESULT_OK, resultIntent);
                     finish();
                 } else {
@@ -108,6 +117,41 @@ public class SearchFoodActivity extends AppCompatActivity {
                 }
             }
         });
+
+        buttonAddCustomFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchFoodActivity.this, NutritionRecipesListActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_ADD_CUSTOM_FOOD);
+            }
+        });
+
+        TextView createCustomRecipeTextView = findViewById(R.id.createCustomRecipeTextView);
+
+        createCustomRecipeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchFoodActivity.this, NutritionRecipeActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_ADD_CUSTOM_FOOD && resultCode == RESULT_OK && data != null) {
+            String foodName = data.getStringExtra("foodName");
+            double carbs = data.getDoubleExtra("carbs", 0);
+            double protein = data.getDoubleExtra("protein", 0);
+            double fat = data.getDoubleExtra("fat", 0);
+            int calories = data.getIntExtra("calories", 0);
+
+            selectedFoodId = data.getStringExtra("foodId");
+            searchView.setQuery(foodName, false);
+            listView.setVisibility(View.GONE);
+            displayCustomFoodDetails(foodName, carbs, protein, fat, calories);
+        }
     }
 
     private void fetchFoodData() {
@@ -190,5 +234,19 @@ public class SearchFoodActivity extends AppCompatActivity {
                 Toast.makeText(SearchFoodActivity.this, "Failed to fetch food details", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void displayCustomFoodDetails(String foodName, double carbs, double protein, double fat, int calories) {
+        selectedFoodTextView.setText(String.format("Name: %s", foodName));
+        carbsTextView.setText(String.format("Carbohydrates: %.1f g", carbs));
+        proteinTextView.setText(String.format("Proteins: %.1f g", protein));
+        fatTextView.setText(String.format("Fat: %.1f g", fat));
+        caloriesTextView.setText(String.format("Calories: %d kcal", calories));
+
+        selectedFoodTextView.setVisibility(View.VISIBLE);
+        carbsTextView.setVisibility(View.VISIBLE);
+        proteinTextView.setVisibility(View.VISIBLE);
+        fatTextView.setVisibility(View.VISIBLE);
+        caloriesTextView.setVisibility(View.VISIBLE);
     }
 }

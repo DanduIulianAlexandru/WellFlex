@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_back"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:layout_gravity="start" />
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Create your recipe"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Recipe name input -->
+    <EditText
+        android:id="@+id/editTextRecipeName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Recipe Name"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Carbs input -->
+    <EditText
+        android:id="@+id/editTextCarbs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Carbohydrates (g)"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Protein input -->
+    <EditText
+        android:id="@+id/editTextProtein"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Proteins (g)"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Fat input -->
+    <EditText
+        android:id="@+id/editTextFat"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Fat (g)"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Calories input -->
+    <EditText
+        android:id="@+id/editTextCalories"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Calories (kcal)"
+        android:inputType="number"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Description input -->
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:minLines="3"
+        android:maxLines="6"
+        android:scrollbars="vertical"
+        android:gravity="top"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Save button -->
+    <Button
+        android:id="@+id/buttonSaveRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Save Recipe"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

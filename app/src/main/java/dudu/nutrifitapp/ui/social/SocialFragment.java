@@ -34,6 +34,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dudu.nutrifitapp.R;
 import dudu.nutrifitapp.databinding.FragmentSocialBinding;
@@ -56,6 +57,7 @@ public class SocialFragment extends Fragment {
     private Uri selectedImageUri;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Dialog createPostDialog;
+    private Map<String, Boolean> friendsMap = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,7 +82,7 @@ public class SocialFragment extends Fragment {
         binding.recyclerViewSearchResults.setAdapter(userAdapter);
 
         loadProfilePicture();
-        loadPosts();
+        loadFriends();
         setupListeners();
 
         return binding.getRoot();
@@ -91,14 +93,37 @@ public class SocialFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String profilePictureUrl = snapshot.child("socialProfile").child("profilePictureUrl").getValue(String.class);
-                if (profilePictureUrl != null) {
+                if (profilePictureUrl != null && isAdded()) {
                     StorageReference profilePicRef = storageReference.child(profilePictureUrl);
                     profilePicRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                        Glide.with(SocialFragment.this)
-                                .load(uri)
-                                .into(binding.imageViewProfilePicture);
+                        if (isAdded()) {
+                            Glide.with(SocialFragment.this)
+                                    .load(uri)
+                                    .into(binding.imageViewProfilePicture);
+                        }
                     });
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+            }
+        });
+    }
+
+
+    private void loadFriends() {
+        DatabaseReference userFriendsRef = FirebaseDatabase.getInstance().getReference("UserFriends").child(currentUserId).child("friends");
+        userFriendsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot friendSnapshot : snapshot.getChildren()) {
+                    if (Boolean.TRUE.equals(friendSnapshot.getValue(Boolean.class))) {
+                        friendsMap.put(friendSnapshot.getKey(), true);
+                    }
+                }
+                loadPosts();
             }
 
             @Override
@@ -115,7 +140,7 @@ public class SocialFragment extends Fragment {
                 postList.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Post post = postSnapshot.getValue(Post.class);
-                    if (post != null) {
+                    if (post != null && friendsMap.containsKey(post.getUserId())) {
                         post.setPostId(postSnapshot.getKey()); // Ensure postId is set
                         if (post.getLikes() == null) {
                             post.setLikes(new HashMap<>());
@@ -123,7 +148,9 @@ public class SocialFragment extends Fragment {
                         postList.add(post);
                     }
                 }
-                postAdapter.notifyDataSetChanged();
+                if (isAdded()) {
+                    postAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -132,6 +159,7 @@ public class SocialFragment extends Fragment {
             }
         });
     }
+
 
     private void setupListeners() {
         binding.editTextPost.setOnClickListener(v -> openCreatePostDialog());
@@ -208,13 +236,14 @@ public class SocialFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             selectedImageUri = data.getData();
-            if (createPostDialog != null && createPostDialog.isShowing()) {
+            if (createPostDialog != null && createPostDialog.isShowing() && isAdded()) {
                 ImageView imageViewPostDialog = createPostDialog.findViewById(R.id.imageViewPostDialog);
                 imageViewPostDialog.setImageURI(selectedImageUri);
                 imageViewPostDialog.setVisibility(View.VISIBLE);
             }
         }
     }
+
 
     private void createPost(String content, Dialog dialog) {
         postsRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -312,8 +341,28 @@ public class SocialFragment extends Fragment {
     }
 
     private void openUserProfile(User user) {
-        Intent intent = new Intent(getContext(), SocialUserDetailActivity.class);
-        intent.putExtra("USER_NAME", user.getSocialProfile().getName());
-        startActivity(intent);
+        usersRef.orderByChild("socialProfile/name").equalTo(user.getSocialProfile().getName())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                            String userId = userSnapshot.getKey();
+                            if (isAdded()) {
+                                Intent intent = new Intent(getContext(), SocialUserDetailActivity.class);
+                                intent.putExtra("USER_ID", userId);
+                                intent.putExtra("USER_NAME", user.getSocialProfile().getName());
+                                startActivity(intent);
+                            }
+                            break;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle error
+                        Toast.makeText(getContext(), "Error retrieving user ID", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
+
 }

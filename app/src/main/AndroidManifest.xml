@@ -16,6 +16,18 @@
         android:theme="@style/Theme.NutriFitApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.options.MyRecipesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.nutrition.NutritionRecipesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.nutrition.NutritionRecipeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.options.OptionsFriendsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.social.SocialUserDetailActivity"
             android:exported="false" />
         <activity

@@ -124,12 +124,17 @@ public class OptionsFragment extends Fragment {
             startActivity(intent);
         });
 
-        btnMealsRecipesFood.setOnClickListener(v -> {
-            // Navigate to Meals, Recipes & Food Fragment or Activity
+        btnMealsRecipesFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyRecipesActivity.class);
+                startActivity(intent);
+            }
         });
 
         btnFriends.setOnClickListener(v -> {
-            // Navigate to Friends Fragment or Activity
+            Intent intent = new Intent(getActivity(), OptionsFriendsActivity.class);
+            startActivity(intent);
         });
 
         btnLogout.setOnClickListener(v -> {

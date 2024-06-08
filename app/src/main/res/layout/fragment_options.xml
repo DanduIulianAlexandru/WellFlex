@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/background"
     tools:context=".ui.options.OptionsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="8dp">
 
         <!-- res/layout/activity_main.xml -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="16dp">
 
             <ImageView
                 android:id="@+id/profile_picture"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="107dp"
+                android:layout_height="111dp"
+                android:background="@drawable/round_image_background"
                 android:scaleType="centerCrop"
                 android:src="@drawable/profile_pic"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/round_image_background" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/streak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Your Streak Text"
+                android:textColor="@android:color/white"
                 android:textSize="19sp"
                 android:textStyle="italic"
                 app:layout_constraintTop_toBottomOf="@id/profile_picture"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <TextView
             android:id="@+id/user_name"
@@ -55,49 +53,105 @@
             android:text="User Name"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_text_color" />
+            android:textColor="@android:color/white" />
 
         <!-- List of options -->
         <Button
             android:id="@+id/btn_profile"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Profile"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            />
 
         <Button
             android:id="@+id/btn_calculate_macros"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Calculate Macronutrients and Calories"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            />
 
         <Button
             android:id="@+id/btn_progress_nutrition"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Progress Nutrition"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            />
 
         <Button
             android:id="@+id/btn_progress_fitness"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Progress Fitness"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            />
 
         <Button
             android:id="@+id/btn_meals_recipes_food"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="My Meals, Recipes and Food"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            />
 
         <Button
             android:id="@+id/btn_friends"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Friends"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center" />
 
         <Button
             android:id="@+id/btn_logout"
-            style="@style/SettingsOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Log Out"
-            android:background="@color/buttons_color"/>
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center" />
     </LinearLayout>
 </ScrollView>
+

@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background">
 
     <ImageButton
         android:id="@+id/backButtonOptionsProfile"
@@ -49,7 +50,9 @@
         android:layout_below="@id/profilePicOptionsProfile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Change Profile Picture" />
+        android:text="Change Profile Picture"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"/>
 
     <EditText
         android:id="@+id/emailOptionsProfile"
@@ -86,15 +89,16 @@
                 android:id="@+id/headerNutritiveProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:background="@color/item">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nutritive Profile"
-                    android:textColor="@android:color/white"
+
                     android:textSize="18sp"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold" />
             </com.github.florent37.expansionpanel.ExpansionHeader>
 
@@ -152,14 +156,14 @@
                 android:id="@+id/headerSocialProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:background="@color/item">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Social Profile"
                     android:textColor="@android:color/white"
+                    android:text="Social Profile"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </com.github.florent37.expansionpanel.ExpansionHeader>
@@ -203,5 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/button_background"
+        android:textColor="@android:color/white"
         android:text="Save" />
 </RelativeLayout>

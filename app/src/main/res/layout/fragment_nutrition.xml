@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:text="Monday, 06/03"
             android:textSize="18sp"
-            android:layout_marginHorizontal="16dp" />
+            android:layout_marginHorizontal="16dp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/buttonNextDay"
@@ -80,7 +81,8 @@
                         android:text="Carbohydrate"
                         android:textColor="@android:color/holo_red_light"
                         android:textSize="14sp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -89,7 +91,8 @@
                         android:text="Protein"
                         android:textColor="@android:color/holo_blue_light"
                         android:textSize="14sp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -98,7 +101,8 @@
                         android:text="Fat"
                         android:textColor="@android:color/holo_orange_light"
                         android:textSize="14sp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -116,7 +120,8 @@
                         android:text="0 / 276 g"
                         android:textColor="@android:color/holo_red_light"
                         android:textSize="14sp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewProtein"
@@ -126,7 +131,8 @@
                         android:text="0 / 110 g"
                         android:textColor="@android:color/holo_blue_light"
                         android:textSize="14sp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewFat"
@@ -136,7 +142,8 @@
                         android:text="0 / 74 g"
                         android:textColor="@android:color/holo_orange_light"
                         android:textSize="14sp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <TextView
@@ -146,7 +153,8 @@
                     android:text="0 / 2207 kcal"
                     android:textSize="14sp"
                     android:gravity="center"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="4dp"
+                    android:textStyle="bold" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -212,7 +220,8 @@
                                 android:text="0 / 69"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -220,7 +229,8 @@
                                 android:text="Carbohydrate"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -237,7 +247,8 @@
                                 android:text="0 / 28"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -245,7 +256,8 @@
                                 android:text="Protein"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -262,7 +274,8 @@
                                 android:text="0 / 19"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -270,7 +283,8 @@
                                 android:text="Fat"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -287,7 +301,8 @@
                                 android:text="0 / 552"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -295,7 +310,8 @@
                                 android:text="Calories"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -356,7 +372,8 @@
                                 android:text="0 / 69"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -364,7 +381,8 @@
                                 android:text="Carbohydrate"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -381,7 +399,8 @@
                                 android:text="0 / 28"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -389,7 +408,8 @@
                                 android:text="Protein"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -406,7 +426,8 @@
                                 android:text="0 / 19"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -414,7 +435,8 @@
                                 android:text="Fat"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -431,7 +453,8 @@
                                 android:text="0 / 552"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -439,7 +462,8 @@
                                 android:text="Calories"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -500,7 +524,8 @@
                                 android:text="0 / 69"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -508,7 +533,8 @@
                                 android:text="Carbohydrate"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -525,7 +551,8 @@
                                 android:text="0 / 28"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -533,7 +560,8 @@
                                 android:text="Protein"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -550,7 +578,8 @@
                                 android:text="0 / 19"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -558,7 +587,8 @@
                                 android:text="Fat"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -575,7 +605,8 @@
                                 android:text="0 / 552"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -583,7 +614,8 @@
                                 android:text="Calories"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -644,7 +676,8 @@
                                 android:text="0 / 69"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -652,7 +685,8 @@
                                 android:text="Carbohydrate"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -669,7 +703,8 @@
                                 android:text="0 / 28"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -677,7 +712,8 @@
                                 android:text="Protein"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -694,7 +730,8 @@
                                 android:text="0 / 19"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -702,7 +739,8 @@
                                 android:text="Fat"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -719,7 +757,8 @@
                                 android:text="0 / 552"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -727,7 +766,8 @@
                                 android:text="Calories"
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="14sp"
-                                android:gravity="center" />
+                                android:gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -748,7 +788,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Generate Today Statistics"
-                android:textColor="@color/colorBlack"
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"/>

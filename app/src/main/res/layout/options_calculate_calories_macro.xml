@@ -2,16 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background">
 
     <Button
         android:id="@+id/fetchDataButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fetch Data"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:textColor="@android:color/white"
+        android:padding="16dp"
+        android:layout_margin="8dp"/>
+
 
     <LinearLayout
         android:id="@+id/userInputContainer"
@@ -80,7 +86,6 @@
                 android:text="Pick level of Physical Activity:"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_marginBottom="16dp" />
 
@@ -97,7 +102,6 @@
                 android:text="Gain/Lose Weight:"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp" />
@@ -118,7 +122,9 @@
         android:text="Calculate Calories and Macros"
         android:layout_below="@id/userInputContainer"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/caloriesField"
@@ -167,6 +173,8 @@
         android:text="Save Results"
         android:layout_below="@id/carbField"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"/>
 
 </RelativeLayout>

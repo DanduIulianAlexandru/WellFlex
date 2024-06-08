@@ -30,6 +30,7 @@ import dudu.nutrifitapp.model.Meal;
 public class NutritionFragment extends Fragment {
 
     private static final int REQUEST_CODE_ADD_FOOD = 1;
+    private static final int REQUEST_CODE_ADD_CUSTOM_FOOD = 2;
     private String selectedMealType;
     private FragmentNutritionBinding binding;
     private FirebaseAuth mAuth;
@@ -91,10 +92,23 @@ public class NutritionFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_ADD_FOOD && resultCode == getActivity().RESULT_OK && data != null) {
+        if ((requestCode == REQUEST_CODE_ADD_FOOD || requestCode == REQUEST_CODE_ADD_CUSTOM_FOOD) && resultCode == getActivity().RESULT_OK && data != null) {
             String foodId = data.getStringExtra("foodId");
-            addFoodToMeal(foodId);
+            String foodName = data.getStringExtra("foodName");
+            double carbs = data.getDoubleExtra("carbs", 0);
+            double protein = data.getDoubleExtra("protein", 0);
+            double fat = data.getDoubleExtra("fat", 0);
+            int calories = data.getIntExtra("calories", 0);
+            addCustomFoodToMeal(foodId, foodName, carbs, protein, fat, calories);
         }
+    }
+
+    private void addCustomFoodToMeal(String foodId, String foodName, double carbs, double protein, double fat, int calories) {
+        // Update UI
+        updateMealUI(foodName, carbs, protein, fat, calories);
+
+        // Store meal in database
+        storeMeal(foodId, foodName, carbs, protein, fat, calories);
     }
 
     private void addFoodToMeal(String foodId) {
@@ -162,7 +176,7 @@ public class NutritionFragment extends Fragment {
             if (currentText.equals("Logged food: None")) {
                 loggedFoodTextView.setText(foodName);
             } else {
-                loggedFoodTextView.setText(currentText + " and " + foodName);
+                loggedFoodTextView.setText(currentText + "\n" + foodName);
             }
 
             double currentCarbs = extractNumericValue(carbsTextView.getText().toString());
@@ -220,7 +234,7 @@ public class NutritionFragment extends Fragment {
                         }
 
                         selectedMealType = mealType;
-                        updateMealUI(String.join(" and ", foodNames), totalCarbs, totalProtein, totalFat, totalCalories);
+                        updateMealUI(String.join("\n", foodNames), totalCarbs, totalProtein, totalFat, totalCalories);
                     }
                 }
 
@@ -336,6 +350,7 @@ public class NutritionFragment extends Fragment {
             }
         });
     }
+
     private void setupGeneratePieChartButton() {
         binding.buttonGeneratePieChart.setOnClickListener(v -> {
             double totalCarbs = extractNumericValue(binding.textViewCarbs.getText().toString());
