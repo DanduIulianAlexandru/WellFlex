@@ -1,0 +1,48 @@
+<!-- res/layout/dialog_create_post.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextPostDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write a post..."
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:gravity="top"
+        android:padding="8dp" />
+
+    <ImageView
+        android:id="@+id/imageViewPostDialog"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/buttonAddImageDialog"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_add_image"
+            android:contentDescription="Add Image"
+            android:layout_marginEnd="8dp" />
+
+        <ImageButton
+            android:id="@+id/buttonPostDialog"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_post"
+            android:contentDescription="Post"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+</LinearLayout>

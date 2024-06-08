@@ -16,10 +16,7 @@
         android:theme="@style/Theme.NutriFitApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.social.SocialSearchUserActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.social.SocialCreatePostActivity"
+            android:name=".ui.social.SocialUserDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.options.OptionsProgressFitnessActivity"
