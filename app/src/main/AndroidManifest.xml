@@ -58,20 +58,20 @@
             android:name=".ui.options.OptionsProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".ui.auth.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main" />
         <activity
-            android:name=".Activities.SetupActivity"
+            android:name=".ui.auth.SetupActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.LoggedInActivity"
+            android:name=".ui.auth.LoggedInActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.SignUpActivity"
+            android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.LogInActivity"
+            android:name=".ui.auth.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

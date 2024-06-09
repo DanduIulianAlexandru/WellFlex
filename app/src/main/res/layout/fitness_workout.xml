@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="0dp"
-    tools:context=".ui.fitness.WorkoutActivity">
+    android:padding="8dp"
+    tools:context=".ui.fitness.WorkoutActivity"
+    android:background="@color/background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,32 +31,20 @@
                     android:scaleType="centerCrop" />
 
                 <ImageButton
-                    android:id="@+id/buttonBack"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:id="@+id/backButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_margin="1dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:adjustViewBounds="true"
+                    android:background="?attr/selectableItemBackground"
                     android:contentDescription="Back"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_back" />
 
-                <TextView
-                    android:id="@+id/textWorkoutName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Workout Name"
-                    android:textColor="@android:color/white"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp" />
             </RelativeLayout>
 
             <TextView
@@ -63,8 +52,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 Minutes - 0 Exercises"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
+                android:textColor="@android:color/white"
                 android:layout_marginTop="16dp"
                 android:padding="8dp" />
 
@@ -84,7 +74,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Start"
-                android:textSize="18sp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_background"
                 android:layout_marginTop="24dp"
                 android:padding="16dp" />
         </LinearLayout>

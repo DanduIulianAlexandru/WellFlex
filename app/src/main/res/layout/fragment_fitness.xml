@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="4dp"
-    tools:context=".ui.fitness.FitnessFragment">
+    tools:context=".ui.fitness.FitnessFragment"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +19,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="8dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@color/primary_element">
 
             <ImageButton
                 android:id="@+id/buttonPreviousDay"
@@ -33,8 +35,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Monday, 06/03"
-                android:textSize="18sp"
-                android:layout_marginHorizontal="16dp" />
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="@android:color/white"/>
 
             <ImageButton
                 android:id="@+id/buttonNextDay"
@@ -50,8 +54,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:gravity="center">
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:background="@color/item">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -64,7 +69,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Calories"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
                     android:layout_marginBottom="4dp" />
 
                 <TextView
@@ -72,8 +78,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -87,7 +94,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Workouts"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
                     android:layout_marginBottom="4dp" />
 
                 <TextView
@@ -95,8 +103,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -110,7 +119,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Time"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
                     android:layout_marginBottom="4dp" />
 
                 <TextView
@@ -118,10 +128,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 min"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
+
 
         <!-- TabLayout for Difficulty Levels -->
         <LinearLayout
@@ -129,29 +141,45 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="8dp">
 
             <Button
                 android:id="@+id/btnBeginner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Beginner" />
+                android:text="Beginner"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="0dp"/>
 
             <Button
                 android:id="@+id/btnIntermediate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Intermediate" />
+                android:text="Inter"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="0dp"/>
 
             <Button
                 android:id="@+id/btnAdvanced"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Advanced" />
+                android:text="Advanced"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="0dp"/>
         </LinearLayout>
+
 
         <!-- Workouts Section -->
         <LinearLayout
@@ -159,7 +187,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:background="@color/background">
 
             <!-- Workouts will be added dynamically -->
         </LinearLayout>

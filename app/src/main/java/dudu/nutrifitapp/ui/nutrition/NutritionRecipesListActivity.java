@@ -1,11 +1,15 @@
 package dudu.nutrifitapp.ui.nutrition;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,9 +43,22 @@ public class NutritionRecipesListActivity extends AppCompatActivity {
         setContentView(R.layout.nutrition_recipes_list);
 
         listView = findViewById(R.id.listViewCustomRecipes);
+        TextView textViewTitle = findViewById(R.id.textViewTitle);
+        ImageButton backButton = findViewById(R.id.backButton);
+
         recipeList = new ArrayList<>();
         meals = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, recipeList) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = view.findViewById(android.R.id.text1);
+                textView.setTextColor(getResources().getColor(android.R.color.white));
+                textView.setTextSize(18);
+                textView.setTypeface(null, Typeface.BOLD);
+                return view;
+            }
+        };
         listView.setAdapter(adapter);
 
         mAuth = FirebaseAuth.getInstance();
@@ -64,6 +81,8 @@ public class NutritionRecipesListActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        backButton.setOnClickListener(v -> finish());
     }
 
     private void loadCustomRecipes() {

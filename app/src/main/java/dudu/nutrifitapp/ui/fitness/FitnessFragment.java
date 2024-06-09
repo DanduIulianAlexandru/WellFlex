@@ -1,10 +1,12 @@
 package dudu.nutrifitapp.ui.fitness;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -51,12 +53,22 @@ public class FitnessFragment extends Fragment {
         });
 
         // Set up buttons for difficulty levels
-        binding.btnBeginner.setOnClickListener(v -> showWorkouts("Beginner"));
-        binding.btnIntermediate.setOnClickListener(v -> showWorkouts("Intermediate"));
-        binding.btnAdvanced.setOnClickListener(v -> showWorkouts("Advanced"));
+        binding.btnBeginner.setOnClickListener(v -> {
+            showWorkouts("Beginner");
+            updateButtonStyles(binding.btnBeginner);
+        });
+        binding.btnIntermediate.setOnClickListener(v -> {
+            showWorkouts("Intermediate");
+            updateButtonStyles(binding.btnIntermediate);
+        });
+        binding.btnAdvanced.setOnClickListener(v -> {
+            showWorkouts("Advanced");
+            updateButtonStyles(binding.btnAdvanced);
+        });
 
-        // Show beginner workouts by default
+        // Show beginner workouts by default and underline the Beginner button
         showWorkouts("Beginner");
+        updateButtonStyles(binding.btnBeginner);
 
         return view;
     }
@@ -118,6 +130,7 @@ public class FitnessFragment extends Fragment {
             CardView cardView = new CardView(getContext());
             cardView.setRadius(16); // Adjust the corner radius as needed
             cardView.setCardElevation(8); // Add elevation to the card
+            cardView.setCardBackgroundColor(getResources().getColor(R.color.background));
 
             LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -150,6 +163,17 @@ public class FitnessFragment extends Fragment {
         intent.putExtra(WorkoutActivity.EXTRA_IMAGE_RES_ID, imageResId);
         intent.putExtra(WorkoutActivity.EXTRA_WORKOUT_NAME, workoutName);
         startActivity(intent);
+    }
+
+    private void updateButtonStyles(Button selectedButton) {
+        Button[] buttons = {binding.btnBeginner, binding.btnIntermediate, binding.btnAdvanced};
+        for (Button button : buttons) {
+            if (button == selectedButton) {
+                button.setPaintFlags(button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            } else {
+                button.setPaintFlags(button.getPaintFlags() & (~Paint.UNDERLINE_TEXT_FLAG));
+            }
+        }
     }
 
     @Override

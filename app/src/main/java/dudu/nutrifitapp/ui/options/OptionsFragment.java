@@ -27,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.concurrent.TimeUnit;
 
-import dudu.nutrifitapp.Activities.LogInActivity;
+import dudu.nutrifitapp.ui.auth.LogInActivity;
 import dudu.nutrifitapp.R;
 
 public class OptionsFragment extends Fragment {

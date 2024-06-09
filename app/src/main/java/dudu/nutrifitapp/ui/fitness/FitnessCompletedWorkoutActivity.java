@@ -44,8 +44,7 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
 
         binding.imageWorkoutCompleted.setImageResource(workoutImageResId);
         binding.textCongratulations.setText("Congratulations, you've completed the workout!");
-        binding.textWorkoutTitle.setText(workoutTitle);
-        binding.textExercisesCount.setText(String.valueOf(totalExercises));
+        binding.textExercisesCount.setText(String.valueOf(totalExercises) + " exercises");
         binding.textWorkoutTime.setText(totalTime + " minutes");
 
         getUserWeightFromDatabase();
@@ -65,7 +64,7 @@ public class FitnessCompletedWorkoutActivity extends AppCompatActivity {
                 if (task.isSuccessful() && task.getResult().exists()) {
                     userWeight = task.getResult().getValue(Double.class);
                     caloriesBurnt = calculateCaloriesBurnt();
-                    binding.textCaloriesBurnt.setText(String.format("%.2f", caloriesBurnt));
+                    binding.textCaloriesBurnt.setText(String.format("%.2f", caloriesBurnt) + "🔥");
                 } else {
                     Toast.makeText(this, "Failed to get user weight", Toast.LENGTH_SHORT).show();
                 }

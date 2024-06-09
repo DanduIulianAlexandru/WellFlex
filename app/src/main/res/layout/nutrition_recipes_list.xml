@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/background_light">
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="Back"
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back" />
+
+    <!-- Title -->
+
+    <!-- ListView for recipes -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/backButton"
+        android:layout_toRightOf="@id/backButton"
+        android:text="Your Recipes:"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/listViewCustomRecipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp" />
-</LinearLayout>
+        android:dividerHeight="1dp"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="16dp"
+        android:padding="8dp" />
+</RelativeLayout>

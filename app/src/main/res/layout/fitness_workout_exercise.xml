@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ui.fitness.FitnessWorkoutExerciseActivity">
+    tools:context=".ui.fitness.FitnessWorkoutExerciseActivity"
+    android:background="@color/background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,11 +17,16 @@
             android:id="@+id/buttonBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_back"
-            android:background="?android:selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="Back"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_back" />
     </RelativeLayout>
 
     <TextView
@@ -32,7 +38,8 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
@@ -52,7 +59,8 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="@android:color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +79,9 @@
             android:text="Pause"
             android:textSize="18sp"
             android:padding="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_background"/>
 
         <Button
             android:id="@+id/buttonSkip"
@@ -80,7 +90,9 @@
             android:layout_weight="1"
             android:text="Skip"
             android:textSize="18sp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_background"/>
     </LinearLayout>
 
 </LinearLayout>

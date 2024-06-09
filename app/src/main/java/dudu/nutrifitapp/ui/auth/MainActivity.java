@@ -1,4 +1,4 @@
-package dudu.nutrifitapp.Activities;
+package dudu.nutrifitapp.ui.auth;
 
 import android.os.Bundle;
 import android.view.MenuItem;

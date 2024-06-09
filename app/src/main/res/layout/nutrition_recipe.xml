@@ -3,25 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background">
 
     <!-- Back button -->
     <ImageButton
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_back"
-        android:background="?android:selectableItemBackgroundBorderless"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:background="?attr/selectableItemBackground"
         android:contentDescription="Back"
-        android:layout_gravity="start" />
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back" />
 
     <!-- Title -->
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:text="Create your recipe"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp" />
 
@@ -31,6 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="Recipe Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
     <!-- Carbs input -->
@@ -40,6 +50,8 @@
         android:layout_height="48dp"
         android:hint="Carbohydrates (g)"
         android:inputType="numberDecimal"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
     <!-- Protein input -->
@@ -49,6 +61,8 @@
         android:layout_height="48dp"
         android:hint="Proteins (g)"
         android:inputType="numberDecimal"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
     <!-- Fat input -->
@@ -58,6 +72,8 @@
         android:layout_height="48dp"
         android:hint="Fat (g)"
         android:inputType="numberDecimal"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
     <!-- Calories input -->
@@ -67,13 +83,15 @@
         android:layout_height="48dp"
         android:hint="Calories (kcal)"
         android:inputType="number"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
     <!-- Description input -->
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:hint="Description"
         android:inputType="textMultiLine"
         android:lines="4"
@@ -81,16 +99,26 @@
         android:maxLines="6"
         android:scrollbars="vertical"
         android:gravity="top"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
+
+    <!-- Spacer to push button to bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <!-- Save button -->
     <Button
         android:id="@+id/buttonSaveRecipe"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:text="Save Recipe"
-        android:backgroundTint="@android:color/holo_blue_light"
+        android:background="@drawable/button_background"
         android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginTop="16dp" />
 
 </LinearLayout>

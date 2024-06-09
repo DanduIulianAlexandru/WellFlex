@@ -7,75 +7,152 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@drawable/photo"
+        android:gravity="center">
 
+        <!-- Title -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setup Your Account"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Profile Picture -->
         <ImageView
             android:id="@+id/profilePicSetup"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:src="@drawable/profile_pic"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Choose Image Button -->
         <Button
             android:id="@+id/ChooseImageButtonSetup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose Image" />
+            android:text="Choose Image"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Username Input -->
         <EditText
             android:id="@+id/usernameSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Username" />
+            android:hint="Username"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Name Input -->
         <EditText
             android:id="@+id/nameSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Name" />
+            android:hint="Name"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Biography Input -->
         <EditText
             android:id="@+id/biographySetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Biography" />
+            android:hint="Biography"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Age Input -->
         <EditText
             android:id="@+id/ageSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Age" />
+            android:hint="Age"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Height Input -->
         <EditText
             android:id="@+id/heightSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Height" />
+            android:hint="Height"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Weight Input -->
         <EditText
             android:id="@+id/weightSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Weight" />
+            android:hint="Weight"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Sex Input -->
         <EditText
             android:id="@+id/sexSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Sex" />
+            android:hint="Sex"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Objective Input -->
         <EditText
             android:id="@+id/objectiveSetup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Objective" />
+            android:hint="Objective"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/textfield_background"
+            android:layout_marginBottom="16dp"/>
 
+        <!-- Save Button -->
         <Button
             android:id="@+id/saveButtonSetup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Save"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_background"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
 </ScrollView>

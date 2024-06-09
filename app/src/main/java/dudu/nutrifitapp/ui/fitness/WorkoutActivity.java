@@ -38,10 +38,6 @@ public class WorkoutActivity extends AppCompatActivity {
         String workoutLevel = getIntent().getStringExtra(EXTRA_WORKOUT_LEVEL);
 
         binding.imageWorkout.setImageResource(imageResId);
-        binding.textWorkoutName.setText(workoutName);
-
-        // Set back button click listener
-        binding.buttonBack.setOnClickListener(v -> onBackPressed());
 
         // Define workout plans
         exercises = getExercises(workoutName);
@@ -52,7 +48,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
         // Add exercise summaries dynamically
         addExerciseSummaries(exercises);
-
+        binding.backButton.setOnClickListener(v -> onBackPressed());
         // Set start button click listener
         binding.buttonStart.setOnClickListener(v -> startWorkout(imageResId, workoutName, workoutLevel));
     }

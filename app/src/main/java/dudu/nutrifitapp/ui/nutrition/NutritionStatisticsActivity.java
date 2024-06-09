@@ -1,8 +1,6 @@
 package dudu.nutrifitapp.ui.nutrition;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -56,8 +54,12 @@ public class NutritionStatisticsActivity extends AppCompatActivity {
         PieDataSet dataSet = new PieDataSet(entries, "Calorie Sources");
         dataSet.setColors(new int[]{ColorTemplate.rgb("#FF0000"), ColorTemplate.rgb("#0000FF"), ColorTemplate.rgb("#FFA500")});
         PieData data = new PieData(dataSet);
+        data.setValueTextSize(18f);
+        data.setValueTextColor(getResources().getColor(android.R.color.white));
 
         pieChart.setData(data);
+        pieChart.setEntryLabelTextSize(18f);
+        pieChart.setEntryLabelColor(getResources().getColor(android.R.color.white));
         pieChart.invalidate(); // refresh
     }
 

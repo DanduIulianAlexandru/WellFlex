@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="4dp"
     tools:context=".ui.nutrition.NutritionFragment"
-    android:background="#F0F0F0">
+    android:background="@color/background">
 
     <!-- Date bar with navigation -->
     <LinearLayout
@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@color/primary_element">
 
         <ImageButton
             android:id="@+id/buttonPreviousDay"
@@ -30,9 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monday, 06/03"
-            android:textSize="18sp"
             android:layout_marginHorizontal="16dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:textColor="@android:color/white"/>
 
         <ImageButton
             android:id="@+id/buttonNextDay"
@@ -64,9 +66,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="#E0E0E0"
+                android:background="@color/background_sections"
                 android:elevation="2dp"
-                android:layout_marginVertical="4dp">
+                android:layout_marginVertical="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Carbohydrate"
-                        android:textColor="@android:color/holo_red_light"
+                        android:textColor="#FF5733"
                         android:textSize="14sp"
                         android:gravity="center"
                         android:textStyle="bold" />
@@ -89,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Protein"
-                        android:textColor="@android:color/holo_blue_light"
+                        android:textColor="#33C1FF"
                         android:textSize="14sp"
                         android:gravity="center"
                         android:textStyle="bold" />
@@ -99,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Fat"
-                        android:textColor="@android:color/holo_orange_light"
+                        android:textColor="#FF33A6"
                         android:textSize="14sp"
                         android:gravity="center"
                         android:textStyle="bold" />
@@ -118,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="0 / 276 g"
-                        android:textColor="@android:color/holo_red_light"
+                        android:textColor="#FF5733"
                         android:textSize="14sp"
                         android:gravity="center"
                         android:textStyle="bold" />
@@ -129,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="0 / 110 g"
-                        android:textColor="@android:color/holo_blue_light"
+                        android:textColor="#33C1FF"
                         android:textSize="14sp"
                         android:gravity="center"
                         android:textStyle="bold" />
@@ -140,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="0 / 74 g"
-                        android:textColor="@android:color/holo_orange_light"
+                        android:textColor="#FF33A6"
                         android:textSize="14sp"
                         android:gravity="center"
                         android:textStyle="bold" />
@@ -154,7 +156,8 @@
                     android:textSize="14sp"
                     android:gravity="center"
                     android:layout_marginTop="4dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"/>
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -163,7 +166,8 @@
                     android:layout_height="wrap_content"
                     android:max="2207"
                     android:progress="0"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="4dp"/>
+
             </LinearLayout>
 
             <!-- Meal logging section -->
@@ -180,16 +184,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="8dp"
-                    android:background="#E8E8E8"
+                    android:background="@color/background_sections"
                     android:elevation="2dp"
-                    android:layout_marginBottom="4dp">
+                    android:layout_marginBottom="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Breakfast"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <TextView
@@ -197,7 +202,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Logged food: None"
-                        android:textSize="14sp"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
                         android:paddingBottom="4dp" />
 
                     <LinearLayout
@@ -217,17 +223,17 @@
                                 android:id="@+id/textViewBreakfastCarbs"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0 / 69"
-                                android:textColor="@android:color/holo_red_light"
-                                android:textSize="14sp"
                                 android:gravity="center"
+                                android:text="0 / 69"
+                                android:textColor="#FF5733"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Carbohydrate"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -245,7 +251,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 28"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -254,7 +260,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Protein"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -272,7 +278,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 19"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -281,7 +287,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Fat"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -299,7 +305,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 552"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -308,7 +314,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Calories"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -324,6 +330,7 @@
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="4dp" />
+
                 </LinearLayout>
 
                 <!-- Lunch Section -->
@@ -332,16 +339,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="8dp"
-                    android:background="#E8E8E8"
+                    android:background="@color/background_sections"
                     android:elevation="2dp"
-                    android:layout_marginBottom="4dp">
+                    android:layout_marginBottom="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lunch"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <TextView
@@ -349,7 +357,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Logged food: None"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <LinearLayout
@@ -370,7 +379,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 69"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -379,7 +388,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Carbohydrate"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -397,7 +406,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 28"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -406,7 +415,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Protein"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -424,7 +433,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 19"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -433,7 +442,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Fat"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -451,7 +460,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 552"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -460,7 +469,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Calories"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -484,16 +493,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="8dp"
-                    android:background="#E8E8E8"
+                    android:background="@color/background_sections"
                     android:elevation="2dp"
-                    android:layout_marginBottom="4dp">
+                    android:layout_marginBottom="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dinner"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <TextView
@@ -501,7 +511,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Logged food: None"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <LinearLayout
@@ -522,7 +533,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 69"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -531,7 +542,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Carbohydrate"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -549,7 +560,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 28"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -558,7 +569,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Protein"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -576,7 +587,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 19"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -585,7 +596,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Fat"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -603,7 +614,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 552"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -612,7 +623,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Calories"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -636,16 +647,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="8dp"
-                    android:background="#E8E8E8"
+                    android:background="@color/background_sections"
                     android:elevation="2dp"
-                    android:layout_marginBottom="4dp">
+                    android:layout_marginBottom="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Snacks"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <TextView
@@ -653,7 +665,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Logged food: None"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:paddingBottom="4dp" />
 
                     <LinearLayout
@@ -674,7 +687,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 69"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -683,7 +696,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Carbohydrate"
-                                android:textColor="@android:color/holo_red_light"
+                                android:textColor="#FF5733"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -701,7 +714,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 28"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -710,7 +723,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Protein"
-                                android:textColor="@android:color/holo_blue_light"
+                                android:textColor="#33C1FF"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -728,7 +741,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 19"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -737,7 +750,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Fat"
-                                android:textColor="@android:color/holo_orange_light"
+                                android:textColor="#FF33A6"
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -755,7 +768,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0 / 552"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -764,7 +777,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Calories"
-                                android:textColor="@android:color/holo_green_light"
+                                android:textColor="#66ff00 "
                                 android:textSize="14sp"
                                 android:gravity="center"
                                 android:textStyle="bold" />
@@ -783,6 +796,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/buttonGeneratePieChart"
                 android:layout_width="wrap_content"
@@ -790,8 +804,12 @@
                 android:text="Generate Today Statistics"
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
-                android:background="?attr/selectableItemBackgroundBorderless"/>
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/button_background"/>
+
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

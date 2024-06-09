@@ -1,4 +1,4 @@
-package dudu.nutrifitapp.Activities;
+package dudu.nutrifitapp.ui.auth;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,8 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.UUID;
 
 import dudu.nutrifitapp.R;
 import dudu.nutrifitapp.model.NutritiveProfile;

@@ -3,49 +3,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/background"
+    android:padding="8dp">
 
     <ImageButton
         android:id="@+id/buttonBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="Back"
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back"
-        android:contentDescription="Back"
-        android:background="?android:selectableItemBackgroundBorderless"
-        android:layout_gravity="start" />
+        android:text="Today Statistics"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories Today"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/textViewCarbs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Carbohydrates: 0 g"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/holo_red_light" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/textViewProtein"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Proteins: 0 g"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/holo_blue_light" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/textViewFat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fats: 0 g"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/holo_orange_light" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>
