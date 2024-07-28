@@ -1,4 +1,7 @@
-# My Nutrition Fitness and Social App
+# WellFlex
+
+Designed for Android, the app was developed in Java and utilizes Firebase for database management and backend services. 
+This is my bachelor's thesis project.
 
 ## Login Screen
 This is the login screen where users can sign in to their account or create a new one.
