@@ -1,21 +1,27 @@
-#WellFlex
-Designed for Android, the app was developed in Java and utilizes Firebase for database management and backend services. 
-The app encapsulates nutrition, fitness, and social elements, distributed across three distinct screens. 
+# My Nutrition Fitness and Social App
 
-Login Screen:
-![login screen](https://github.com/user-attachments/assets/4a6b2b23-0dd0-4816-9f74-7d036d8d4179)
+## Login Screen
+![Login Screen](app/login screen.png)
+This is the login screen where users can sign in to their account or create a new one.
 
-Nutrition Logging Screen:
-![nutrition](https://github.com/user-attachments/assets/9f49f069-dcfe-4bf7-8f1f-f61a0418b66d)
+## Options Screen
+![Options Screen](app/options.png)
+The options screen allows users to navigate through different sections of the app such as workouts, nutrition, and social features.
 
-Nutrition Statistics Screen:
-![statistics](https://github.com/user-attachments/assets/38290439-83fa-4d92-9ee3-aa84c983831a)
+## Nutrition and Statistics Screens
+<p align="center">
+  <img src="app/nutrition.png" alt="Nutrition Screen" width="25%">
+  <img src="app/statistics.png" alt="Statistics Screen" width="25%">
+</p>
+The nutrition screen helps users keep track of their dietary intake, while the statistics screen provides insights and analytics on their fitness progress.
 
-Settings Screen:
-![options](https://github.com/user-attachments/assets/7688fa87-5ec5-40de-bbd1-e7ed0fd34be4)
+## Workout Screens
+<p align="center">
+  <img src="app/WORKOUT.png" alt="Workout Screen" width="25%">
+  <img src="app/workout2.png" alt="Workout 2 Screen" width="25%">
+</p>
+These screens showcase different workout routines and exercises that users can follow.
 
-Social Feed Screen:
-
-Workout Screen:
-
-Workout Summary Screen:
+## Social Screen
+![Social Screen](app/social.png)
+The social screen allows users to connect with friends, share their progress, and engage with the community.
